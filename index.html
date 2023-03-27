@@ -10,14 +10,17 @@
 </head>
 <body>
     <h1> Editor de texto </h1>
-    <div class="botoes">
-        <button class="btn" type="button"><i class="material-icons">search</i></button>
-        <button class="btn" type="button"><i>I</i></button>
-        <button class="btn" type="button"> + </button>
-        <div class="painel"></div>
-        <button class="btn" type="button"> - </button>
+    <div class="container">
+        <div class="botoes">
+            <button class="btn" type="button"><div class="material-icons">format_bold</div></button>
+            <button class="btn" type="button"><div class="material-icons">format_italic</div></button>
+            <button class="btn" type="button"><div class="material-icons">format_underlined</div></button>
+            <button class="btn" type="button"><div class="material-icons">format_align_left</div></button>
+            <button class="btn" type="button"><div class="material-icons">format_align_center</div></button>
+            <button class="btn" type="button"><div class="material-icons">format_align_right</div></button>
+        </div>
+        <textarea id="texto" cols="90" rows="20"></textarea>
     </div>
-    <textarea id="texto" cols="30" rows="10"></textarea>
     
 </body>
 </html>
