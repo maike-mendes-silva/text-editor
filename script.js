@@ -2,9 +2,14 @@ let texto = window.document.querySelector('textarea#texto')
 
 const botoes = window.document.querySelectorAll('.btn')
 
+//Animação de botão pressionado
 botoes.forEach(botao => {
     botao.addEventListener('click', () => {
-        botao.classList.add('pressionado')
+		if(botao.hasAttribute('style')){
+			botao.removeAttribute('style')
+		} else {
+			botao.setAttribute('style', 'box-shadow: none; background: rgba(2, 111, 133, 0.5);')
+		}
     })
 })
 
@@ -20,14 +25,6 @@ function sublinhado(){
     texto.style.textDecoration = 'underline'
 }
 
-function alinharEsquerda(){
-    texto.style.textAlign = 'left'
-}
-
-function alinharCentro(){
-    texto.style.textAlign = 'center'
-}
-
-function alinharDireita(){
-    texto.style.textAlign = 'right'
+function alinhamento(estilo) {
+	texto.style.textAlign = estilo
 }
