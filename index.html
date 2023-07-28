@@ -12,14 +12,14 @@
     <h1> Editor de texto </h1>
     <div class="container">
         <div class="botoes">
-            <button class="btn" id="negrito" type="button" onclick='negrito()'><div class="material-icons">format_bold</div></button>
-            <button class="btn" type="button" onclick='italico()'><div class="material-icons">format_italic</div></button>
-            <button class="btn" type="button" onclick='sublinhado()'><div class="material-icons">format_underlined</div></button>
-            <button class="btn" type="button" onclick="alinhamento('left')"><div class="material-icons">format_align_left</div></button>
-            <button class="btn" type="button" onclick="alinhamento('center')"><div class="material-icons">format_align_center</div></button>
-            <button class="btn" type="button" onclick="alinhamento('right')"><div class="material-icons">format_align_right</div></button>
+            <button class="btn" id="negrito" type="button" onclick="estilizar('strong')"><div class="material-icons">format_bold</div></button>
+            <button class="btn" type="button" onclick="estilizar('i')"><div class="material-icons">format_italic</div></button>
+            <button class="btn" type="button" onclick="estilizar('u')"><div class="material-icons">format_underlined</div></button>
+            <button class="btn-radio" id="esquerda" type="button" onclick="alinhamento('left')"><div class="material-icons">format_align_left</div></button>
+            <button class="btn-radio" id="centro" type="button" onclick="alinhamento('center')"><div class="material-icons">format_align_center</div></button>
+            <button class="btn-radio" id="direita" type="button" onclick="alinhamento('right')"><div class="material-icons">format_align_right</div></button>
         </div>
-        <textarea id="texto" cols="90" rows="20"></textarea>
+        <div id="texto" cols="90" rows="20" contenteditable></div>
     </div>
     <script src="script.js"></script>
 </body>
