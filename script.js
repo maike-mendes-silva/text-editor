@@ -1,4 +1,4 @@
-let texto = window.document.querySelector('textarea#texto')
+let texto = window.document.querySelector('div#texto')
 
 const botoes = window.document.querySelectorAll('.btn')
 
@@ -52,7 +52,7 @@ function mudarDados (id) {
 	
 }
 
-function montarAnimacao(dados, botoesRadio){
+function montarAnimacao(){
 	valor = Object.values(dados)
 	for(let i = 0; i < botoesRadio.length; i++){
 		if(valor[i]){
@@ -69,20 +69,44 @@ botoesRadio.forEach(botao => {
     botao.addEventListener('click', () => {
 		id = botao.getAttribute('id')
 		mudarDados(id)
-		montarAnimacao(dados, botoesRadio)
+		montarAnimacao()
     })
 })
 
-function negrito(){
-    texto.style.fontWeight = 'bold'
+function getTextoSelecionado(){
+	
+	var textoSelecionado = window.getSelection().toString()
+	start = texto.textContent.indexOf(textoSelecionado)
+	finish = start + textoSelecionado.length 
+	
+	let infoTexto = {
+		comeco: start,
+		fim: finish,
+		conteudo: textoSelecionado
+	}
+	
+	return infoTexto
+	
 }
 
-function italico(){
-    texto.style.fontStyle = 'italic'
-}
-
-function sublinhado(){
-    texto.style.textDecoration = 'underline'
+function estilizar(tipo){
+	if(window.getSelection().toString() != ""){
+		infoTexto = getTextoSelecionado()
+		texto.innerHTML = texto.innerText.substring(0, infoTexto['comeco']) + "<"+tipo+">" + infoTexto['conteudo'] + "</"+tipo+">" + texto.innerText.substring(infoTexto['fim'])
+	} else{
+		switch(tipo) {
+			case 'strong':
+				texto.style.fontWeight = 'bold'
+				break
+			case 'i':
+				texto.style.fontStyle = 'italic'
+				break
+			case 'u':
+				texto.style.textDecoration = 'underline'
+				break
+		}
+	}
+	
 }
 
 function alinhamento(estilo) {
