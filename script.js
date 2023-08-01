@@ -3,13 +3,24 @@ let texto = window.document.querySelector('div#texto')
 const botoes = window.document.querySelectorAll('.btn')
 
 //Animação de botão pressionado
+let estilos = {
+	negrito: false,
+	italico: false,
+	sublinhado: false
+}
+let estilosBotoes = Object.keys(estilos)
 botoes.forEach(botao => {
     botao.addEventListener('click', () => {
-		if(botao.hasAttribute('style')){
-			botao.removeAttribute('style')
-		} else {
-			botao.setAttribute('style', 'box-shadow: none; background: rgba(2, 111, 133, 0.5);')
-		}
+		for(var i = 0; i < estilosBotoes.length; i++){
+			if(botao.id == estilosBotoes[i]){
+				if(estilos[estilosBotoes[i]]){
+					botao.removeAttribute('style')
+				} else {
+					botao.setAttribute('style', 'box-shadow: none; background: rgba(2, 111, 133, 0.5);')
+				}
+				estilos[estilosBotoes[i]] = !estilos[estilosBotoes[i]]
+			}
+		}		
     })
 })
 
@@ -96,13 +107,25 @@ function estilizar(tipo){
 	} else{
 		switch(tipo) {
 			case 'strong':
-				texto.style.fontWeight = 'bold'
+				if(!estilos['negrito']){
+					texto.style.fontWeight = 'bold'
+				} else {
+					texto.style.fontWeight = 'normal'
+				}
 				break
 			case 'i':
-				texto.style.fontStyle = 'italic'
+				if(!estilos['italico']){
+					texto.style.fontStyle = 'italic'
+				} else{
+					texto.style.fontStyle = 'normal'
+				}
 				break
 			case 'u':
-				texto.style.textDecoration = 'underline'
+				if(!estilos['sublinhado']){
+					texto.style.textDecoration = 'underline'
+				} else {
+					texto.style.textDecoration = 'none'
+				}
 				break
 		}
 	}
